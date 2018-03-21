@@ -91,7 +91,7 @@ You can verify at this point (or any later time) that the setup procedure comple
                     -annex-name MyFirstAnnex$USER \
                     -duration 0.83 \
                     -idle 0.25 \
-                    -aws-on-demand-ami-id ami-a2a795b4
+                    -aws-on-demand-ami-id ami-cd5f95b0
 
 This should start the process of bringing one VM up. *Duration*, which is the max lifetime of the VM, is set to 50 minutes. This lifetime is intended to help you conserve money by preventing the annex instances from accidentally running forever. *Idle* is set to 15 minutes, which is the amount of time the VM can sit without any jobs running before terminating.
 
@@ -225,7 +225,7 @@ Make sure you still have at least one annex host active, and then submit the `aw
 
 When we start submitting many simultaneous jobs into the queue, it might be worth looking at where they run. To get that information, we'll use the `condor_history` command from quickstart tutorial:
 
-	$ job_histogram
+	$ condor_history -format '%s\n' LastRemoteHost $USER | cut -d@ -f2 | cut -d. -f2,3 | distribution --height=101
 	Val          |Ct (Pct)     Histogram
 	ec2.internal |456 (46.77%) +++++++++++++++++++++++++++++++++++++++++++++++++++++
 	uchicago.edu |422 (43.28%) +++++++++++++++++++++++++++++++++++++++++++++++++
@@ -289,7 +289,7 @@ procedure.
 Go to [AWS Request Spot Instances](https://console.aws.amazon.com/ec2sp/v1/spot/home?region=us-east-1#)
 to get started. Click `Request Spot Instances`.
 
-Set target capacity to 5, and use `ami-a2a795b4` for the image.
+Set target capacity to 5, and use `ami-cd5f95b0` for the image.
 
 Select instance types: `c3.large` and `m4.xlarge`
 
@@ -299,7 +299,7 @@ Make sure you select the correct instance role in the dropdown.
 
 ![Spot2](Images/Spot2.png)
 
-Download the JSON file from the upper right corner. Do _not_ finish the guide.
+Download the JSON file from the lower right corner. Do _not_ finish the guide.
 
 ![Spot3](Images/Spot3.png)
 
