@@ -203,7 +203,7 @@ It is the same as `run_job.submit` with the added line `arguments = $(x_low) $(x
 
 When submitting a DAGMan job, HTCondor helpfully tells you what the log files are named and what their use is:
 
-    $ condor_submit_dag jobmanagement.dag 
+    $ condor_submit_dag jobmanagement_supplyvars.dag
 
     -----------------------------------------------------------------------
     File for submitting this DAG to Condor           : jobmanagement.dag.condor.sub
